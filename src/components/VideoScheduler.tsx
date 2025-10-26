@@ -10,7 +10,7 @@ import { Plus, Video, X } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface Video {
-  [key: string]: any;
+  [key: string]: string;
   id: string;
   title: string;
   url: string;
@@ -19,7 +19,7 @@ interface Video {
 interface Playlist {
   id: string;
   name: string;
-  description: string;
+  description: string | null;
   videos: Video[];
 }
 
@@ -107,7 +107,7 @@ export const VideoScheduler = () => {
   };
 
   const extractYouTubeId = (url: string) => {
-    const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+    const regex = /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/;
     const match = url.match(regex);
     return match ? match[1] : null;
   };

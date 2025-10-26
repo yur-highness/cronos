@@ -14,7 +14,9 @@ export const useAuth = () => {
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
+        console.log(event);
       }
+     
     );
 
     // Check for existing session
