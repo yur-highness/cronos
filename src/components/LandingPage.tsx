@@ -3,9 +3,32 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useNavigate } from "react-router-dom";
 import { CheckCircle, Sparkles, Zap, Calendar } from "lucide-react";
+import { useState, useRef } from "react";
 
-export function LandingPage() {
+export function LandingPage({className = "" }) {
   const navigate = useNavigate();
+  const [transformStyle, setTransformStyle] = useState("");
+    const itemRef = useRef<HTMLDivElement>(null);
+  
+    const handleMouseMove = (event:any) => {
+      if (!itemRef.current) return;
+  
+      const { left, top, width, height } =
+        itemRef.current.getBoundingClientRect();
+  
+      const relativeX = (event.clientX - left) / width;
+      const relativeY = (event.clientY - top) / height;
+  
+      const tiltX = (relativeY - 0.5) * 5;
+      const tiltY = (relativeX - 0.5) * -5;
+  
+      const newTransform = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(.95, .95, .95)`;
+      setTransformStyle(newTransform);
+    };
+  
+    const handleMouseLeave = () => {
+      setTransformStyle("");
+    };
   
 
   const features = [
@@ -76,8 +99,16 @@ export function LandingPage() {
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative" >
+              <div
+               ref={itemRef}
+        className={className}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ transform: transformStyle }}
+              >
              <video src="/pro114.mov" autoPlay loop muted></video>
+             </div>
             </div>
           </div>
         </div>
