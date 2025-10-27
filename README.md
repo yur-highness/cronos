@@ -1,3 +1,48 @@
+# Cronos
+
+Cronos is a task management application that helps you organize and prioritize your tasks efficiently. It provides a user-friendly interface and powerful features to streamline your workflow.
+
+## Features
+
+- **Drag and Drop**: Easily move tasks between columns using drag and drop functionality.
+- **Real-time Updates**: See changes made by other users in real-time.
+- **Task History**: Track every change made to a task and revert back to previous versions if needed.
+- **Video Scheduler**: Schedule tasks with video integration.
+- **Lightning Fast**: Drag and drop tasks with instant updates across all your devices in real-time.
+- **Smart Organization**: Organize tasks by status with customizable columns and priority levels.
+- **Timeline View**: Visualize your tasks on a timeline and schedule.
+
+
+## Usage
+
+1. Sign up or sign in to your account.
+2. Create a new task or edit an existing one.
+3. Use drag and drop to move tasks between columns.
+4. View task history to see changes made to a task.
+5. Schedule tasks with video integration.
+6. Customize columns and priority levels for smart organization.
+7. Visualize tasks on a timeline and schedule.
+
+## Technologies Used
+
+- React
+- TypeScript
+- Tailwind CSS
+- Vite
+- Supabase
+- Lucide Icons
+
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
