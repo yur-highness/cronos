@@ -144,6 +144,21 @@ const Index = () => {
     await signOut();
   };
 
+   const handleDeleteTask = async (taskId: string) => {
+    const { error } = await supabase
+      .from("tasks")
+      .delete()
+      .eq("id", taskId);
+
+    if (!error) {
+      await logTaskHistory(taskId, "deleted", null, null);
+      fetchTasks();
+      toast.success("Task deleted successfully");
+    } else {
+      toast.error("Failed to delete task");
+    }
+  };
+
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">
@@ -214,6 +229,7 @@ const Index = () => {
                     );
                   }}
                   onTaskClick={handleTaskClick}
+                  onTaskDelete={handleDeleteTask}
                 />
               </div>
             ) : activeView === "timeline" ? (

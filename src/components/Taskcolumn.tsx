@@ -8,9 +8,10 @@ interface TaskColumnProps {
   status: TaskStatus;
   tasks: Task[];
   onTaskClick: (task: Task) => void;
+  onTaskDelete: (taskId: string) => void;
 }
 
-export const TaskColumn = ({ title, status, tasks, onTaskClick }: TaskColumnProps) => {
+export const TaskColumn = ({ title, status, tasks, onTaskClick, onTaskDelete }: TaskColumnProps) => {
   const { setNodeRef, isOver } = useDroppable({
     id: status,
   });
@@ -40,6 +41,7 @@ export const TaskColumn = ({ title, status, tasks, onTaskClick }: TaskColumnProp
                 key={task.id}
                 task={task}
                 onClick={() => onTaskClick(task)}
+                onDelete={() => onTaskDelete(task.id)}
               />
             ))}
           </div>

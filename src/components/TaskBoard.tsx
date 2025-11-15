@@ -18,9 +18,10 @@ interface TaskBoardProps {
   tasks: Task[];
   onTasksChange: (tasks: Task[]) => void;
   onTaskClick: (task: Task) => void;
+  onTaskDelete: (taskId: string) => void;
 }
 
-export const TaskBoard = ({ tasks, onTasksChange, onTaskClick }: TaskBoardProps) => {
+export const TaskBoard = ({ tasks, onTasksChange, onTaskClick, onTaskDelete }: TaskBoardProps) => {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   const sensors = useSensors(
@@ -83,18 +84,21 @@ export const TaskBoard = ({ tasks, onTasksChange, onTaskClick }: TaskBoardProps)
           status="todo"
           tasks={getTasksByStatus("todo")}
           onTaskClick={onTaskClick}
+          onTaskDelete={onTaskDelete}
         />
         <TaskColumn
           title="In Progress"
           status="in-progress"
           tasks={getTasksByStatus("in-progress")}
           onTaskClick={onTaskClick}
+          onTaskDelete={onTaskDelete}
         />
         <TaskColumn
           title="Done"
           status="done"
           tasks={getTasksByStatus("done")}
           onTaskClick={onTaskClick}
+          onTaskDelete={onTaskDelete}
         />
       </div>
 
